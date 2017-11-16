@@ -1,0 +1,81 @@
+#accessform {
+	border: 2px solid #a55;
+	color: #a55;
+	background-color: white;
+	display: none;
+	font-size: 11px;
+	padding: 0px 5px;
+	font-weight: bold;
+	text-transform: uppercase;
+	position: absolute;
+	top: 3px;
+	right: 3px;
+}
+
+#accessform .button {
+	font-size: 10px;
+	font-weight: bold;
+	padding: 1px;
+	margin: 0px;
+}
+
+.button {
+	background-color: #a55;
+	color: white;
+	text-transform: uppercase;
+}
+
+.button:hover,  .access:hover{
+	background-color: #5a5;
+}
+
+.access {
+	display: block;
+	background-color: #a55;
+	color: white;
+	float: right;
+	font-size: 11px;
+	padding: 10px 7px;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin: 2px;
+	cursor: pointer;
+}
+
+.light {
+	border-style: solid;
+	border-width: 1px;
+	border-color: grey;
+	margin: 5px;
+	width: 200px;
+}
+
+.fb {
+	background-color: #4267b2;
+color: #fff;
+cursor: pointer;
+
+		border: none;
+    font-family: Helvetica, Arial, sans-serif;
+    letter-spacing: .25px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: clip;
+    white-space: nowrap;
+
+		border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.program {
+	text-align: center;
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+a:link, a:visited {
+	text-decoration: none;
+	color: black;
+}

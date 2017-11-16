@@ -1,0 +1,53 @@
+
+.button {
+	background-color: #a55;
+	color: white;
+	text-transform: uppercase;
+}
+
+.button:hover,  .access:hover{
+	background-color: #5a5;
+}
+
+.access {
+	display: block;
+	background-color: #a55;
+	color: white;
+	float: right;
+	font-size: 11px;
+	padding: 10px 7px;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin: 2px;
+}
+
+div .languages {
+	border-style: solid;
+	border-width: 1px;
+	border-color: grey;
+	margin: 5px;
+	width: 200px;
+  padding: 50px;
+}
+
+.program {
+	text-align: center;
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  text-align: left;
+  cursor: pointer;
+}
+
+code {
+	text-align: left;
+}
+
+a:link, a:visited {
+	text-decoration: none;
+	color: black;
+}
