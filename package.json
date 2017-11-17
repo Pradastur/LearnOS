@@ -13,7 +13,7 @@
 },
   "author": "Adrian Prada Gil",
   "license": "ISC",
-  "homepage": ""homepage": "https://github.com/Pradastur/LearnOS/tree/master/backend#readme",
+  "homepage": "homepage": "https://github.com/Pradastur/LearnOS/tree/master/backend#readme",
   "dependencies": {
     "express": "^4.16.2"
   }
