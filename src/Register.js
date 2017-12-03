@@ -1,7 +1,4 @@
 import React from 'react';
-
-import{BrowserHistory} from 'react-router'
-
 /*const Title = ({nombre} = props) => (
   <h1>{ nombre }</h1>
 );
