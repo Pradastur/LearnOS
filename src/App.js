@@ -35,7 +35,7 @@ class App extends React.Component {
       idLevel: null,
       isLogged:false,
       textEx:'',
-      user:''
+      username:''
     }
     this.changeContent= this.changeContent.bind(this);
     this.showTextContent=this.showTextContent.bind(this);
@@ -62,6 +62,7 @@ class App extends React.Component {
     this.changeToAddExercise=this.changeToAddExercise.bind(this);
     this.changeToAddTutorial=this.changeToAddTutorial.bind(this);
     this.adminScreen=this.adminScreen.bind(this);
+    this.getName=this.getName.bind(this);
     /*this.changeLanguage=this.changeLanguage.bind(this);*/
   }
 
@@ -285,6 +286,11 @@ class App extends React.Component {
     this.setState({
       id:7
     });
+  }
+
+  getName(name){
+    var usuario=name;
+    console.log("GET NAME: "+name);
   }
 
   render() {

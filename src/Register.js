@@ -21,7 +21,6 @@ constructor (props) {
       password: '',
       email:''
     }
-  this.Log = this.Log.bind(this);
   this.Logged=this.Logged.bind(this);
   }
 
@@ -50,33 +49,48 @@ var params = {
   };
 console.log(params);
 
-return fetch("https://backend-fagcpkyvda.now.sh/users",
-{
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-      password: this.state.password,
-      email: this.state.email,
-      username:this.state.username,
-    })
-  }
-)
-.then((response) => response.json())
-.then((responseData) => {
-  console.log(responseData);
-if(this.state.username=='' || this.state.password==='' || this.state.email==='' ){
-    this.setState({happen:"EMPTY BOXES, TRY AGAIN"});
-}else if(this.state.email.indexOf('@') === -1 || this.state.email.indexOf('.') === -1){
-    this.setState({happen:"IT IS NOT A VALID EMAIL, TRY AGAIN"});
-}else if (this.state.password.length < 8){
-    this.setState({happen:"PASSWORD MUST CONTAIN 8 CHARACTERS AT LEAST, TRY AGAIN"});
-}else if(responseData.success){
-    alert('YOU HAVE BEEN REGISTERED SUCCESFULLY')
-    this.Log();
-}else {
-    this.setState({happen:"USERNAME OR EMAIL ALREADY TAKEN"});
+var logged= fetch("https://backend-lykuovauml.now.sh/users/"+this.state.username+"/adrian",
+    {
+      method: "GET",
     }
-  })
+  )
+  .then((response) => response.json() )
+  .then((responseData) => {
+      console.log("Response: "+responseData);
+if(this.state.username==='' || this.state.password===''){
+    alert("EMPTY BOXES, TRY AGAIN");
+}else if(responseData=="noexists"){
+  return fetch("https://backend-qaexchevie.now.sh/users/",
+  {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+        password: this.state.password,
+        email: this.state.email,
+        username:this.state.username,
+      })
+    }
+  )
+  .then((response) => response.json())
+  .then((responseData) => {
+    console.log("Esto ES: "+ responseData);
+  if(this.state.username=='' || this.state.password==='' || this.state.email==='' ){
+      this.setState({happen:"EMPTY BOXES, TRY AGAIN"});
+  }else if(responseData == true){
+      alert('YOU HAVE BEEN REGISTERED SUCCESFULLY')
+      this.props.LogNow();;
+  }else {
+      this.setState({happen:"USERNAME OR EMAIL ALREADY TAKEN"});
+      }
+    })
+}else{
+    alert("User already registered");
+}
+  }).catch(function(e) {
+    alert( e.message);
+  } )
+
+
 }
 
 	render(){

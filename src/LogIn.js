@@ -22,7 +22,6 @@ constructor (props) {
      password: ''
    }
 
-    this.Log = this.Log.bind(this);
  }
 
 handleNameChange = (event) => {
@@ -33,25 +32,13 @@ handleNameChange = (event) => {
    this.setState({ password: event.target.value });
 };
 
-Log(){
-   if(this.state.username==='' || this.state.password===''){
-     alert('Empty Fields');
-   }else if(this.state.username==='Admin' && this.state.password==='admin'){
-     this.props.AdminScreen();
-   }else if(this.state.username==='Adrian' && this.state.password==='adrian'){
-     this.props.LogNow();
-   }else{
-     alert('Wrong Username or Password');
-   }
-}
-
 TryLog = () => {
 
 var params = {
     username: this.state.username,
     password: this.state.password,
   };
-return fetch("https://backend-fagcpkyvda.now.sh/users/"+this.state.username+"/"+this.state.password,
+return fetch("https://backend-lykuovauml.now.sh/users/"+this.state.username+"/"+this.state.password,
     {
       method: "GET",
     }
@@ -60,9 +47,14 @@ return fetch("https://backend-fagcpkyvda.now.sh/users/"+this.state.username+"/"+
   .then((responseData) => {
       console.log("Response: "+responseData);
 if(this.state.username==='' || this.state.password===''){
-    this.setState({happen:"EMPTY BOXES, TRY AGAIN"});
-}else if(responseData.success){
+    alert("EMPTY BOXES, TRY AGAIN");
+}else if(responseData=="true"){
     this.props.LogNow();
+}else if(responseData=="noexists"){;
+    alert("Usuario No Registrado");
+}else if(responseData=="admin"){;
+    this.props.AdminScreen();
+    alert("You has Entered like Administrator");
 }else{
     this.setState({happen:"INCORRECT USERNAME OR PASSWORD"});
 }
@@ -97,7 +89,9 @@ if(this.state.username==='' || this.state.password===''){
     			name="password"/>
     		</div>
     		<div>
-    		<input id="Submit" className="buttonSubmit" type="button" value="Submit" onClick={this.Log}></input>
+    		<input id="Submit" className="buttonSubmit"
+        type="button" value="Submit"
+        onClick={this.TryLog}></input>
     		</div>
         </form>
 			</div>
