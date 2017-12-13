@@ -6,6 +6,7 @@ export class LevelC extends React.Component{
 		super(props);
 		this.changeLesson1=this.changeLesson1.bind(this);
 		this.changeLesson2=this.changeLesson2.bind(this);
+		this.changeLesson3=this.changeLesson3.bind(this);
 	}
 
 	changeLesson1(){
@@ -14,6 +15,10 @@ export class LevelC extends React.Component{
 
 	changeLesson2(){
 		this.props.changeToLesson2();
+	}
+
+	changeLesson3(){
+		this.props.changeToLesson3();
 	}
 
 	render(){
@@ -26,7 +31,7 @@ export class LevelC extends React.Component{
 					<ul>
 						<li onClick={this.changeLesson1}>Lesson 1</li>
 						<li onClick={this.changeLesson2}>Lesson 2</li>
-						<li>Lesson 3</li>
+						<li onClick={this.changeLesson3}>Lesson 3</li>
 					</ul>
 				</div>
 			</div>

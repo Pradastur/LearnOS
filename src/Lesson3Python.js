@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class Lesson2C extends React.Component{
+export class Lesson3Python extends React.Component{
 constructor(props){
 	super(props);
 	this.correctChoice=this.correctChoice.bind(this);
@@ -20,22 +20,20 @@ render(){
 		return(
 			<div className="Lesson">
 				<div className="Level">
-					<h1>C Lesson 2</h1>
+					<h1>C Lesson 3</h1>
 					<div className="Tutorial">
 						<p> This level is prepared to start understanding the language.</p>
-						<p>To pass the level you have to choose the correct answer. </p>
+						<p> Functions cannot return more than one value at a time </p>
 						<div className="Exercise">
 							<div className="Question">
 								<p>The keyword used to transfer control from a function back to the calling function is</p>
 							</div>
               <div className="Options">
                 <div>
-                    <button className="buttonOption1" onClick={this.wrongChoice}>switch</button>
-                    <button className="buttonOption2" onClick={this.wrongChoice}>goto</button>
+                    <button className="buttonOption1" onClick={this.correctChoice}>true</button>
                 </div>
                 <div>
-                    <button className="buttonOption3" onClick={this.wrongChoice}>go</button>
-                    <button className="buttonOption4" onClick={this.correctChoice}>return</button>
+                    <button className="buttonOption2" onClick={this.wrongChoice}>false</button>
                 </div>
               </div>
 						</div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class Lesson2C extends React.Component{
+export class Lesson2Python extends React.Component{
 constructor(props){
 	super(props);
 	this.correctChoice=this.correctChoice.bind(this);
@@ -20,22 +20,23 @@ render(){
 		return(
 			<div className="Lesson">
 				<div className="Level">
-					<h1>C Lesson 2</h1>
+					<h1>Python Lesson 2</h1>
 					<div className="Tutorial">
 						<p> This level is prepared to start understanding the language.</p>
 						<p>To pass the level you have to choose the correct answer. </p>
 						<div className="Exercise">
 							<div className="Question">
-								<p>The keyword used to transfer control from a function back to the calling function is</p>
+								<p> a>>bc </p>
+								<p>What is the output when following statement is executed ? </p>
 							</div>
               <div className="Options">
                 <div>
-                    <button className="buttonOption1" onClick={this.wrongChoice}>switch</button>
-                    <button className="buttonOption2" onClick={this.wrongChoice}>goto</button>
+                    <button className="buttonOption1" onClick={this.wrongChoice}>a</button>
+                    <button className="buttonOption2" onClick={this.wrongChoice}>bc</button>
                 </div>
                 <div>
-                    <button className="buttonOption3" onClick={this.wrongChoice}>go</button>
-                    <button className="buttonOption4" onClick={this.correctChoice}>return</button>
+                    <button className="buttonOption3" onClick={this.wrongChoice}>bca</button>
+                    <button className="buttonOption4" onClick={this.correctChoice}>abc</button>
                 </div>
               </div>
 						</div>

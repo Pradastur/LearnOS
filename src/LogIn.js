@@ -18,28 +18,57 @@ export class LogIn extends React.Component {
 constructor (props) {
     super(props);
     this.state= {
-      name: '',
-      pass: ''
-    }
-  this.Log = this.Log.bind(this);
-  }
+     username: '',
+     password: ''
+   }
+
+    this.Log = this.Log.bind(this);
+ }
 
 handleNameChange = (event) => {
-    this.setState({ name: event.target.value });
-  };
+   this.setState({ username: event.target.value });
+ };
 
-  handlePasswordChange = (event) => {
-    this.setState({ pass: event.target.value });
+ handlePasswordChange = (event) => {
+   this.setState({ password: event.target.value });
 };
 
-  Log(){
-    if(this.state.name==='' || this.state.pass===''){
-      alert('Empty Fields');
-    }else if(this.state.name==='Admin' && this.state.pass==='admin'){
-      this.props.LogNow();
-    }else{
-      alert('Wrong Username or Password');
+Log(){
+   if(this.state.username==='' || this.state.password===''){
+     alert('Empty Fields');
+   }else if(this.state.username==='Admin' && this.state.password==='admin'){
+     this.props.AdminScreen();
+   }else if(this.state.username==='Adrian' && this.state.password==='adrian'){
+     this.props.LogNow();
+   }else{
+     alert('Wrong Username or Password');
+   }
+}
+
+TryLog = () => {
+
+var params = {
+    username: this.state.username,
+    password: this.state.password,
+  };
+return fetch("https://backend-fagcpkyvda.now.sh/users/"+this.state.username+"/"+this.state.password,
+    {
+      method: "GET",
     }
+  )
+  .then((response) => response.json() )
+  .then((responseData) => {
+      console.log("Response: "+responseData);
+if(this.state.username==='' || this.state.password===''){
+    this.setState({happen:"EMPTY BOXES, TRY AGAIN"});
+}else if(responseData.success){
+    this.props.LogNow();
+}else{
+    this.setState({happen:"INCORRECT USERNAME OR PASSWORD"});
+}
+  }).catch(function(e) {
+    alert( e.message);
+  } )
 }
 
 	render(){
@@ -53,7 +82,7 @@ handleNameChange = (event) => {
 				<label> <b> Username </b> </label>
 
 				<input type="text"
-        value={this.state.name}
+        value={this.state.username}
         onChange={this.handleNameChange}
 				placeholder="Enter Username"
 				name="username"/>
@@ -62,7 +91,7 @@ handleNameChange = (event) => {
 				<label> <b> Password </b> </label>
 
     			<input type="password"
-          value={this.state.pass}
+          value={this.state.password}
           onChange={this.handlePasswordChange}
     			placeholder="Enter Password"
     			name="password"/>
