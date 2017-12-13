@@ -25,7 +25,11 @@ export class LevelJava extends React.Component{
 		return(
 			<div className="level">
 				<div className="title">
-					<h1>C</h1>
+					<h1>Java</h1>
+				</div>
+				<div className="Video">
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/3u1fu6f8Hto"
+					frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 				</div>
 				<div className="listLevel">
 					<ul>
