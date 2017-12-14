@@ -18,9 +18,9 @@ export class LevelPython extends React.Component{
 				</div>
 				<div className="listLevel">
 					<ul>
-						<li onClick={this.changeLesson1}>Lesson 1</li>
-						<li onClick={this.changeLesson2}>Lesson 2</li>
-						<li onClick={this.changeLesson3}>Lesson 3</li>
+						<li onClick={this.changeToLesson1}>Lesson 1</li>
+						<li onClick={this.changeToLesson2}>Lesson 2</li>
+						<li onClick={this.changeToLesson3}>Lesson 3</li>
 					</ul>
 				</div>
 			</div>
