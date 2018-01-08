@@ -49,7 +49,7 @@ var params = {
   };
 console.log(params);
 
-var logged= fetch("https://backend-lykuovauml.now.sh/users/"+this.state.username+"/adrian",
+var logged= fetch("https://learnos-backend.herokuapp.com/users/"+this.state.username+"/adrian",
     {
       method: "GET",
     }

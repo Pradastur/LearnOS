@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -30,15 +30,14 @@ constructor(props){
   render() {
   		return (
   			<div className="NavButtons">
-  			<button className="LogIn" onClick={this.handleChangeLogIn} onHome={this.handleChangeHome}>
+  			<button className="LogIn" onClick={this.handleChangeLogIn}>
   				Log In
   			</button>
 
-  			<button className="Register" onClick={this.handleChangeRegister} onHome={this.handleChangeHome}>
+  			<button className="Register" onClick={this.handleChangeRegister}>
   				Register
   			</button>
   			</div>
   			);
   }
 }
-

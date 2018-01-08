@@ -21,7 +21,7 @@ constructor (props) {
      username: '',
      password: ''
    }
-
+   this.hashCode2=this.hashCode2.bind(this);
  }
 
 handleNameChange = (event) => {
@@ -32,13 +32,25 @@ handleNameChange = (event) => {
    this.setState({ password: event.target.value });
 };
 
+hashCode2(pass){
+	    var hash = 0;
+	    if (pass.length == 0) return hash;
+	    for (var i = 0; i < pass.length; i++) {
+	        var char = pass.charCodeAt(i);
+          var hash = ((hash<<5)-hash)+char;
+          hash = hash & hash; // Convert to 32bit integer
+	    }
+      console.log(hash);
+	    return hash;
+	}
+
 TryLog = () => {
 
 var params = {
     username: this.state.username,
-    password: this.state.password,
+    password: this.hashCode2(this.state.password),
   };
-return fetch("https://backend-lykuovauml.now.sh/users/"+this.state.username+"/"+this.state.password,
+return fetch("https://learnos-backend.herokuapp.com/users/"+this.state.username+"/"+this.hashCode2(this.state.password),
     {
       method: "GET",
     }
@@ -48,11 +60,11 @@ return fetch("https://backend-lykuovauml.now.sh/users/"+this.state.username+"/"+
       console.log("Response: "+responseData);
 if(this.state.username==='' || this.state.password===''){
     alert("EMPTY BOXES, TRY AGAIN");
-}else if(responseData=="true"){
+}else if(responseData=="exists"){
     this.props.LogNow();
-}else if(responseData=="noexists"){;
+}else if(responseData=="noexists"){
     alert("Usuario No Registrado");
-}else if(responseData=="admin"){;
+}else if(responseData=="admin"){
     this.props.AdminScreen();
     alert("You has Entered like Administrator");
 }else{

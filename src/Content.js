@@ -1,20 +1,22 @@
 import React from 'react';
+import ReactDOM from 'react-dom'
 import {RectangularBox} from './RectangularBox'
 
 export class Content extends React.Component {
 
-  render() {
-  		return (
-        <div>
-        <div className="Boxes">
-
-          <RectangularBox pl="C"/>
-
-          <RectangularBox pl="Java"/>
-
-          <RectangularBox pl="Python"/>
-        </div>
-        </div>
-  			)
-  	}
+  constructor(props){
+    super(props);
+    const languages= ["C", "Java", "Python"];
+    this.state={languages};
   }
+
+
+  render(){
+    return(
+      <div>
+      {this.state.languages.map((language) =>(
+        <RectangularBox  key={language.toString()} pl={language} />
+      ))}
+      </div>)
+  }
+}

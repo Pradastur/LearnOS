@@ -31,6 +31,13 @@
     border-bottom: 1px solid #888;
 }
 
+.Image{
+  display: flex;
+  height:60px;
+  width: 120px;
+  justify-content: right;
+}
+
 .Options{
   display: flex;
   flex-direction: row;
@@ -51,6 +58,9 @@
       background-color: #1883ba;
 }
 
+.NavButtons .UploadFiles{
+
+}
 
 
 .NavButtons button{
