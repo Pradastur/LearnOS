@@ -11,13 +11,13 @@ constructor (props) {
   this.Log=this.Log.bind(this)
   }
 
-  Stay(){
-    this.props.No();
-    this.props.history.replace('/');
+ Stay(){
+    this.props.history.replace('/start');
   }
 
   Log(){
     this.props.Yes();
+    this.props.history.replace('/');
 }
 
 TryLog = () => {
