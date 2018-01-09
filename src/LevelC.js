@@ -1,13 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 
 export class LevelC extends React.Component{
 	constructor(props){
 		super(props);
-		
-		this.changeLesson1=this.changeLesson1.bind(this);
-		this.changeLesson2=this.changeLesson2.bind(this);
-		this.changeLesson3=this.changeLesson3.bind(this);
 	}
 
 	TryExercise = () => {
@@ -39,18 +37,6 @@ export class LevelC extends React.Component{
 	  } )
 	}
 
-	changeLesson1(){
-		this.props.changeToLesson1();
-	}
-
-	changeLesson2(){
-		this.props.changeToLesson2();
-	}
-
-	changeLesson3(){
-		this.props.changeToLesson3();
-	}
-
 	render(){
 		return(
 			<div className="level">
@@ -65,9 +51,9 @@ export class LevelC extends React.Component{
 				</div>
 				<div className="listLevel">
 					<ul>
-						<li onClick={this.changeLesson1}>Lesson 1</li>
-						<li onClick={this.changeLesson2}>Lesson 2</li>
-						<li onClick={this.changeLesson3}>Lesson 3</li>
+						<Link to='levelC_1'><li>Lesson 1</li></Link>
+						<Link to='levelC_2'><li>Lesson 2</li></Link>
+						<Link to='levelC_3'><li>Lesson 3</li></Link>
 					</ul>
 				</div>
 			</div>

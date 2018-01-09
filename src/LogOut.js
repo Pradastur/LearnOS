@@ -12,7 +12,8 @@ constructor (props) {
   }
 
   Stay(){
-  	this.props.No();
+    this.props.No();
+    this.props.history.replace('/');
   }
 
   Log(){

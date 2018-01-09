@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -18,7 +19,7 @@ handleTextChange = (event) => {
 submit(){
 	if(this.state.text== 'print("Hello, world!")'){
 		alert('THE ANSWER IS CORRECT');
-		this.props.CorrectAnswer();
+		this.props.history.replace('/levelPython');
 	}else{
 		alert('WRONG ANSWER. TRY AGAIN');
 

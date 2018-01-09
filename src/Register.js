@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 /*const Title = ({nombre} = props) => (
   <h1>{ nombre }</h1>
@@ -21,7 +23,6 @@ constructor (props) {
       password: '',
       email:''
     }
-  this.Logged=this.Logged.bind(this);
   }
 
   handlePasswordChange = (event) => {
@@ -60,7 +61,7 @@ var logged= fetch("https://learnos-backend.herokuapp.com/users/"+this.state.user
 if(this.state.username==='' || this.state.password===''){
     alert("EMPTY BOXES, TRY AGAIN");
 }else if(responseData=="noexists"){
-  return fetch("https://backend-qaexchevie.now.sh/users/",
+  return fetch("https://learnos-backend.herokuapp.com/users/",
   {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -77,8 +78,8 @@ if(this.state.username==='' || this.state.password===''){
   if(this.state.username=='' || this.state.password==='' || this.state.email==='' ){
       this.setState({happen:"EMPTY BOXES, TRY AGAIN"});
   }else if(responseData == true){
-      alert('YOU HAVE BEEN REGISTERED SUCCESFULLY')
-      this.props.LogNow();;
+      alert('YOU HAVE BEEN REGISTERED SUCCESFULLY');
+      <Link to='/start'></Link>
   }else {
       this.setState({happen:"USERNAME OR EMAIL ALREADY TAKEN"});
       }

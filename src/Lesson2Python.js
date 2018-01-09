@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export class Lesson2Python extends React.Component{
 constructor(props){
@@ -9,7 +10,7 @@ constructor(props){
 
 correctChoice(){
 		alert('CORRECT ANSWER');
-    this.props.CorrectAnswer();
+		this.props.history.replace('/levelPython');
 }
 
 wrongChoice(){

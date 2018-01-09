@@ -1,6 +1,5 @@
 import React from 'react';
-
-
+import { Link } from 'react-router-dom';
 
 export class Lesson1Java extends React.Component{
 constructor(props){
@@ -18,7 +17,7 @@ handleTextChange = (event) => {
 submit(){
 	if(this.state.text== 'System.out.println("Hello World");'){
 		alert('THE ANSWER IS CORRECT');
-		this.props.CorrectAnswer();
+		this.props.history.replace('/levelJava');
 	}else{
 		alert('WRONG ANSWER. TRY AGAIN');
 

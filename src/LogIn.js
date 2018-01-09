@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 /*const Title = ({nombre} = props) => (
@@ -21,7 +22,6 @@ constructor (props) {
      username: '',
      password: ''
    }
-   this.hashCode2=this.hashCode2.bind(this);
  }
 
 handleNameChange = (event) => {
@@ -32,25 +32,13 @@ handleNameChange = (event) => {
    this.setState({ password: event.target.value });
 };
 
-hashCode2(pass){
-	    var hash = 0;
-	    if (pass.length == 0) return hash;
-	    for (var i = 0; i < pass.length; i++) {
-	        var char = pass.charCodeAt(i);
-          var hash = ((hash<<5)-hash)+char;
-          hash = hash & hash; // Convert to 32bit integer
-	    }
-      console.log(hash);
-	    return hash;
-	}
-
 TryLog = () => {
 
 var params = {
     username: this.state.username,
-    password: this.hashCode2(this.state.password),
+    password: this.state.password,
   };
-return fetch("https://learnos-backend.herokuapp.com/users/"+this.state.username+"/"+this.hashCode2(this.state.password),
+return fetch("https://learnos-backend.herokuapp.com/users/"+this.state.username+"/"+this.state.password,
     {
       method: "GET",
     }
@@ -60,24 +48,27 @@ return fetch("https://learnos-backend.herokuapp.com/users/"+this.state.username+
       console.log("Response: "+responseData);
 if(this.state.username==='' || this.state.password===''){
     alert("EMPTY BOXES, TRY AGAIN");
-}else if(responseData=="exists"){
-    this.props.LogNow();
+}else if(responseData=="true"){
+        this.props.LogNow();
+        this.props.history.replace('/start');
 }else if(responseData=="noexists"){
     alert("Usuario No Registrado");
 }else if(responseData=="admin"){
-    this.props.AdminScreen();
+    this.props.changeToAdmin();
+    this.props.history.replace('/admin');
     alert("You has Entered like Administrator");
+}else if(responseData==false){
+    alert("INCORRECT USERNAME OR PASSWORD");
 }else{
     this.setState({happen:"INCORRECT USERNAME OR PASSWORD"});
 }
   }).catch(function(e) {
     alert( e.message);
   } )
+
 }
 
 	render(){
-		/*const items = this.state.views.map(t => ( //ESTO VA EN EL 39<ul>{ items }</ul>
-      <Item valor={ t } /> ));*/
 		return (
 			<div>
       <form>

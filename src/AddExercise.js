@@ -5,12 +5,10 @@ export class AddExercise extends React.Component{
   constructor(props){
     super(props);
 
-    this.submit=this.submit.bind(this);
   }
 
   submit(){
   		alert('Exercise ADDED')
-      this.props.confirmExercise();
   }
 
   render(){
@@ -49,7 +47,7 @@ export class AddExercise extends React.Component{
            </div>
       </div>
         <div className="Exercise Submit">
-            <input id="Submit" className="buttonSubmit" type="button" value="Confirm" onClick={this.submit}></input>
+            <input id="Submit" className="buttonSubmit" type="button" value="Confirm"></input>
         </div>
       </div>
       )

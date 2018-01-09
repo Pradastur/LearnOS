@@ -12,8 +12,8 @@ export class AdminScreen extends React.Component{
       </div>
       <div className="List of Actions">
         <ul>
-          <li onClick={this.props.changeToLanguage}>Add Language</li>
-          <li onClick={this.props.changeToExercise}>Add Exercise</li>
+          <li>Add Language</li>
+          <li>Add Exercise</li>
         </ul>
       </div>
       </div>

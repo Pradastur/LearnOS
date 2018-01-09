@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
 import {RectangularBox} from './RectangularBox'
 
 export class Content extends React.Component {
@@ -9,7 +8,6 @@ export class Content extends React.Component {
     const languages= ["C", "Java", "Python"];
     this.state={languages};
   }
-
 
   render(){
     return(

@@ -31,12 +31,12 @@
     border-bottom: 1px solid #888;
 }
 
-.Image{
+/*.Image{
   display: flex;
   height:60px;
   width: 120px;
   justify-content: right;
-}
+}*/
 
 .Options{
   display: flex;

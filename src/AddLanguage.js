@@ -5,12 +5,10 @@ export class AddLanguage extends React.Component{
   constructor(props){
     super(props);
 
-    this.submit=this.submit.bind(this);
   }
 
   submit(){
   		alert('LANGUAGE ADDED')
-      this.props.confirmLanguage();
       console.log("ESTOY AQUI")
   }
 
@@ -34,7 +32,7 @@ export class AddLanguage extends React.Component{
          </div>
         </div>
         <div className="Language Submit">
-            <input id="Submit" className="buttonSubmit" type="button" value="Confirm" onClick={this.submit}></input>
+            <input id="Submit" className="buttonSubmit" type="button" value="Confirm"></input>
         </div>
       </div>
       )

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export class NavBarLogOut extends React.Component {
 
@@ -8,7 +9,6 @@ constructor(props){
 			file: '',
 			previewImage: ''
 		}
-		this.LogOut=this.LogOut.bind(this)
 	}
 
 	_handleSubmit(e) {
@@ -26,7 +26,7 @@ constructor(props){
         )
   }
 
-	_handleImageChange(e) {
+	/*_handleImageChange(e) {
     e.preventDefault();
 
     let reader = new FileReader();
@@ -64,43 +64,32 @@ constructor(props){
      // console.log(this.state.imagePreviewUrl)
       reader.readAsDataURL(image)
     })
+		//	<div className="Image">
+		//		<form onSubmit={(e)=>this._handleSubmit(e)}>
+		//      <input className="fileInput"
+		//        type="file"
+						onChange={(e)=>this._handleImageChange(e)} />
+					</form>
+			</div>
 
-}
-
-
-
-   LogOut(){
-    this.props.goLogout();
-  }
-
-
-
-
-	UploadFiles(){
-
-	}
+}*/
 
   render() {
-		let {previewImage} = this.state;
+		/*let {previewImage} = this.state;
     let $imagePreview = null;
     if (previewImage) {
       $imagePreview = (<img className="Avatar" src={previewImage} alt="avatar"/>);
     } else {
       $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
-		}
+		}*/
   		return (
   			<div className="NavButtons">
-				<div className="Image">
-					{$imagePreview}
-					<form onSubmit={(e)=>this._handleSubmit(e)}>
-            <input className="fileInput"
-              type="file"
-							onChange={(e)=>this._handleImageChange(e)} />
-						</form>
-				</div>
-  			<button className="LogOut" onClick={this.LogOut}>
+
+				<Link to='/logout'>
+  			<button className="LogOut">
   				Log Out
   			</button>
+				</Link>
   			</div>
   			);
   }
