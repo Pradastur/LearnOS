@@ -11,7 +11,7 @@ constructor (props) {
   this.Log=this.Log.bind(this)
   }
 
- Stay(){
+  Stay(){
     this.props.history.replace('/start');
   }
 

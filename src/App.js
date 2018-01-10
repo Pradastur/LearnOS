@@ -36,11 +36,12 @@ class App extends React.Component {
       idLevel: null,
       isLogged:false,
       textEx:'',
-      username:''
+      username:'',
+      languages:[]
     }
     this.trueLog=this.trueLog.bind(this);
     this.changeToAdminScreen=this.changeToAdminScreen.bind(this);
-    //this.TryLog();
+    this.TryLog();
   }
 
   /*changeLanguage(code){
@@ -49,7 +50,8 @@ class App extends React.Component {
     return levels[this.state.idLevel];
 }*/
 
-/*TryLog = () => {
+TryLog = () => {
+  var languages=[];
 return fetch("https://learnos-backend.herokuapp.com/languages/",
     {
       method: "GET",
@@ -57,23 +59,18 @@ return fetch("https://learnos-backend.herokuapp.com/languages/",
   )
   .then((response) => response.json() )
   .then((responseData) => {
-    console.log("Response: "+responseData);
-    const j = Object.values(responseData);
-      var journalEntries = [];
-
-        for (var i = 0; i < j.length; i++){
-          journalEntries.push(
-            <div>
-            <h3>{j[i]._id}</h3>
-            </div>
-          );
-          console.log(journalEntries);
-    }
-    return(<div>{journalEntries}</div>);
-  }).catch(function(e) {
+    var obj=JSON.stringify(responseData);
+        console.log(obj)
+    var stringify = JSON.parse(obj);
+        console.log(stringify)
+    for (var i = 0; i < stringify.length; i++) {
+      languages.push(stringify[i]['_id']);
+  }
+  this.setState({...this.state.languages, languages});
+    }).catch(function(e) {
     alert( e.message);
-  })
-}*/
+    })
+}
 
 trueLog () {
     this.setState({
@@ -98,12 +95,6 @@ changeToAdminScreen(){
     this.setState({ showText: newTextContent });
   }
 
-
-  getName(name){
-    var usuario=name;
-    console.log("GET NAME: "+name);
-  }
-
   render() {
     return (
       <div className="App">
@@ -115,10 +106,10 @@ changeToAdminScreen(){
           </div>
       <div className="Content">
       <Switch>
-  		      <Route exact path='/' render={(props) => (<Content {...props}/>)}/>
-  		      <Route path='/login' render={(props) => (<LogIn {...props}LogNow={this.trueLog} changeToAdmin={this.changeToAdminScreen}/>)} />
+  		      <Route exact path='/' render={(props) => (<Content {...props} languageList={this.state.languages}/>)}/>
+  		      <Route path='/login' render={(props) => (<LogIn {...props} LogNow={this.trueLog} changeToAdmin={this.changeToAdminScreen}/>)} />
             <Route path='/logout' render={(props) => (<LogOut{...props} Yes={this.trueLog} No={this.trueLog}/>)} />
-            <Route path='/start' component={Start}/>
+            <Route path='/start' render={(props) => (<Start {...props} languageList={this.state.languages}/>)}/>
   		      <Route path='/register' component={Register}/>
             <Route path='/admin' component={AdminScreen}/>
             <Route path='/levelC' render={(props) => (<LevelC{...props}/>)} />
