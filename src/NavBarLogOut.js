@@ -16,6 +16,7 @@ constructor(props){
     var formData = new FormData();
     formData.append("file",this.state.file);
     formData.append("extension",".png");
+		alert('Image Updated');
       return fetch("https://learnos-backend.herokuapp.com/files/",
           {
             method: "POST",
