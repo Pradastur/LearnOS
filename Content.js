@@ -5,9 +5,17 @@ export class Content extends React.Component {
 
   constructor(props){
     super(props);
-    const languages= ["C", "Java", "Python"];
-    this.state={languages};
+    this.state={languages:[]
+    };
   }
+
+  componentWillReceiveProps(nextProps) {
+  if(this.props != nextProps) {
+    this.setState({
+      languages: nextProps.languageList
+    });
+  }
+}
 
   render(){
     return(

@@ -7,11 +7,17 @@ export class Start extends React.Component{
 
 constructor(props){
 	super(props);
-	const languages= ["C", "Java", "Python"];
-	this.state={
-		languages
- };
+	this.state={languages:[]
+	};
 		/*this.obtainLanguage=this.obtainLanguage.bind(this)*/
+}
+
+componentWillReceiveProps(nextProps) {
+if(this.props != nextProps) {
+	this.setState({
+		languages: nextProps.languageList
+	});
+}
 }
 
 /*obtainLanguage(code){
@@ -24,6 +30,7 @@ constructor(props){
 
 				<h1> Select Level </h1>
 				<div className="Languages">
+
 
 					<Link to='/levelC'><RectangularBox pl="C" desc="This is the language C" /></Link>
 					<Link to='/levelJava'><RectangularBox pl="Java" desc="This is the language Java"/></Link>

@@ -12,12 +12,13 @@ constructor (props) {
   }
 
   Stay(){
-    this.props.No();
-    this.props.history.replace('/');
+    this.props.history.replace('/start');
   }
 
   Log(){
     this.props.Yes();
+    this.props.refreshHome();
+    this.props.history.replace('/');
 }
 
 TryLog = () => {
