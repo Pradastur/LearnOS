@@ -84,6 +84,10 @@ constructor(props){
 								onChange={(e)=>this._handleImageChange(e)} />
 							</form>
 					</div>
+					<button className="submitButton"
+						type="submit"
+						onClick={(e)=>this._handleSubmit(e)}>Upload Avatar Image
+					</button>
 				<Link to='/logout'>
   			<button className="LogOut">
   				Log Out
