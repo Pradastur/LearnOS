@@ -17,6 +17,7 @@ constructor (props) {
 
   Log(){
     this.props.Yes();
+    this.props.refreshHome();
     this.props.history.replace('/');
 }
 

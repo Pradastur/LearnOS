@@ -7,7 +7,6 @@ export class Content extends React.Component {
     super(props);
     this.state={languages:[]
     };
-    console.log("level"+this.state.languages[1])
   }
 
   componentWillReceiveProps(nextProps) {

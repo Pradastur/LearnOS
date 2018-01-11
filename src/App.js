@@ -108,9 +108,9 @@ changeToAdminScreen(){
       <Switch>
   		      <Route exact path='/' render={(props) => (<Content {...props} languageList={this.state.languages}/>)}/>
   		      <Route path='/login' render={(props) => (<LogIn {...props} LogNow={this.trueLog} changeToAdmin={this.changeToAdminScreen}/>)} />
-            <Route path='/logout' render={(props) => (<LogOut{...props} Yes={this.trueLog} No={this.trueLog}/>)} />
+            <Route path='/logout' render={(props) => (<LogOut{...props} Yes={this.trueLog} No={this.trueLog} refreshHome={this.TryLog}/>)} />
             <Route path='/start' render={(props) => (<Start {...props} languageList={this.state.languages}/>)}/>
-  		      <Route path='/register' component={Register}/>
+  		      <Route path='/register' render={(props) => (<Register {...props} LogNow={this.trueLog}/>)} />
             <Route path='/admin' component={AdminScreen}/>
             <Route path='/levelC' render={(props) => (<LevelC{...props}/>)} />
             <Route path='/levelJava' render={(props) => (<LevelJava />)} />

@@ -26,7 +26,7 @@ constructor(props){
         )
   }
 
-	/*_handleImageChange(e) {
+	_handleImageChange(e) {
     e.preventDefault();
 
     let reader = new FileReader();
@@ -61,36 +61,35 @@ constructor(props){
           previewImage: reader.result
         });
       }
-     // console.log(this.state.imagePreviewUrl)
+      //console.log(this.state.imagePreviewUrl)
       reader.readAsDataURL(image)
-    })
-		//	<div className="Image">
-		//		<form onSubmit={(e)=>this._handleSubmit(e)}>
-		//      <input className="fileInput"
-		//        type="file"
-						onChange={(e)=>this._handleImageChange(e)} />
-					</form>
-			</div>
-
-}*/
+    });
+}
 
   render() {
-		/*let {previewImage} = this.state;
+		let {previewImage} = this.state;
     let $imagePreview = null;
     if (previewImage) {
       $imagePreview = (<img className="Avatar" src={previewImage} alt="avatar"/>);
     } else {
-      $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
-		}*/
+      $imagePreview = (<div className="previewText">Select an Image</div>);
+		}
   		return (
   			<div className="NavButtons">
-
+				<div className="Image">
+						 {$imagePreview}
+						<form onSubmit={(e)=>this._handleSubmit(e)}>
+				      <input className="fileInput"
+				        type="file"
+								onChange={(e)=>this._handleImageChange(e)} />
+							</form>
+					</div>
 				<Link to='/logout'>
   			<button className="LogOut">
   				Log Out
   			</button>
 				</Link>
-  			</div>
+				</div>
   			);
   }
 }

@@ -20,7 +20,7 @@
 
 .NavButtons{
     display: flex;
-    height: 60px;
+    height: 75px;
     width: 100vw;
     flex-direction: row;
     background-color: #444;
@@ -31,12 +31,16 @@
     border-bottom: 1px solid #888;
 }
 
-/*.Image{
+.Image{
   display: flex;
-  height:60px;
+  height:75px;
   width: 120px;
   justify-content: right;
-}*/
+}
+
+.previewImage{
+  font-size: 1em;
+}
 
 .Options{
   display: flex;
@@ -58,10 +62,6 @@
       background-color: #1883ba;
 }
 
-.NavButtons .UploadFiles{
-
-}
-
 
 .NavButtons button{
   background-color: #a55;
@@ -69,7 +69,7 @@
   color: white;
   flex-direction: row;
   text-transform: uppercase;
-  height: 60px;
+  height: 75px;
   font-family: 'Oswald', sans-serif;
   font-size: 1.2em;
 }

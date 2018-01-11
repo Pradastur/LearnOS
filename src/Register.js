@@ -49,18 +49,6 @@ var params = {
     username: this.state.username,
   };
 console.log(params);
-
-var logged= fetch("https://learnos-backend.herokuapp.com/users/"+this.state.username+"/adrian",
-    {
-      method: "GET",
-    }
-  )
-  .then((response) => response.json() )
-  .then((responseData) => {
-      console.log("Response: "+responseData);
-if(this.state.username==='' || this.state.password===''){
-    alert("EMPTY BOXES, TRY AGAIN");
-}else if(responseData=="noexists"){
   return fetch("https://learnos-backend.herokuapp.com/users/",
   {
         method: "POST",
@@ -74,19 +62,15 @@ if(this.state.username==='' || this.state.password===''){
   )
   .then((response) => response.json())
   .then((responseData) => {
-    console.log("Esto ES: "+ responseData);
   if(this.state.username=='' || this.state.password==='' || this.state.email==='' ){
       this.setState({happen:"EMPTY BOXES, TRY AGAIN"});
   }else if(responseData == true){
       alert('YOU HAVE BEEN REGISTERED SUCCESFULLY');
-      <Link to='/start'></Link>
+      this.props.LogNow();
+      this.props.history.replace('/start');
   }else {
-      this.setState({happen:"USERNAME OR EMAIL ALREADY TAKEN"});
+      this.setState({happen:"USERNAME OR EMAIL ALREADY REGISTERED"});
       }
-    })
-}else{
-    alert("User already registered");
-}
   }).catch(function(e) {
     alert( e.message);
   } )
