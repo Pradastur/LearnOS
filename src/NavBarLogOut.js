@@ -17,7 +17,7 @@ constructor(props){
     formData.append("file",this.state.file);
     formData.append("extension",".png");
 		alert('Image Updated');
-      return fetch("https://learnos-backend.herokuapp.com/files/",
+      return fetch("https://learnos-backend.herokuapp.com/files/"+ this.props.user,
           {
             method: "POST",
             credentials: 'include',
@@ -43,7 +43,7 @@ constructor(props){
   }
 
 	componentWillMount() {
-		fetch("https://learnos-backend.herokuapp.com/files/",
+		fetch("https://learnos-backend.herokuapp.com/files/"+ this.props.user,
       {
         method: "GET",
         credentials: 'include',

@@ -74,9 +74,14 @@ return fetch("https://learnos-backend.herokuapp.com/languages/",
 
 trueLog () {
     this.setState({
-      isLogged: !this.state.isLogged
+      isLogged: !this.state.isLogged,
     });
 }
+
+handleUser = (user) => {
+        this.setState({username: user});
+        console.log("USERNAME: "+ this.state.username)
+    }
 
 changeToAdminScreen(){
   this.setState({
@@ -90,6 +95,12 @@ changeToAdminScreen(){
     });
 }
 
+onUpdate (username)
+{
+  this.setState({ username }) ;
+  console.log(this.state.username)
+}
+
   showTextContent(){
     const newTextContent = this.state.showText == false ? true : false;
     this.setState({ showText: newTextContent });
@@ -99,7 +110,7 @@ changeToAdminScreen(){
     return (
       <div className="App">
       <div className="Nav">
-         {!this.state.isLogged ? <NavBar/> : <NavBarLogOut/>}
+         {!this.state.isLogged ? <NavBar/> : <NavBarLogOut user={this.state.username}/>}
          </div>
       <div className="Logo">
           {!this.state.isLogged ?<Link to='/'> <img src={logo} className='logo' alt="logo"/> </Link> : <Link to='/start'> <img src={logo} className='logo' alt="logo"/> </Link>}
@@ -107,10 +118,10 @@ changeToAdminScreen(){
       <div className="Content">
       <Switch>
   		      <Route exact path='/' render={(props) => (<Content {...props} languageList={this.state.languages}/>)}/>
-  		      <Route path='/login' render={(props) => (<LogIn {...props} LogNow={this.trueLog} changeToAdmin={this.changeToAdminScreen}/>)} />
+  		      <Route path='/login' render={(props) => (<LogIn {...props} LogNow={this.trueLog} changeToAdmin={this.changeToAdminScreen} name={this.onUpdate.bind(this)}/>)} />
             <Route path='/logout' render={(props) => (<LogOut{...props} Yes={this.trueLog} No={this.trueLog} refreshHome={this.TryLog}/>)} />
             <Route path='/start' render={(props) => (<Start {...props} languageList={this.state.languages}/>)}/>
-  		      <Route path='/register' render={(props) => (<Register {...props} LogNow={this.trueLog}/>)} />
+  		      <Route path='/register' render={(props) => (<Register {...props} LogNow={this.trueLog} name={this.handleUser}/>)} />
             <Route path='/admin' component={AdminScreen}/>
             <Route path='/levelC' render={(props) => (<LevelC{...props}/>)} />
             <Route path='/levelJava' render={(props) => (<LevelJava />)} />

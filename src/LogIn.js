@@ -22,6 +22,7 @@ constructor (props) {
      username: '',
      password: ''
    }
+   this.onClick= this.onClick.bind(this);
  }
 
 handleNameChange = (event) => {
@@ -31,6 +32,10 @@ handleNameChange = (event) => {
  handlePasswordChange = (event) => {
    this.setState({ password: event.target.value });
 };
+
+update () {
+      this.props.name(this.state.username);
+    }
 
 TryLog = () => {
 
@@ -68,6 +73,11 @@ if(this.state.username==='' || this.state.password===''){
 
 }
 
+onClick(){
+    this.TryLog();
+    this.update();
+  }
+
 	render(){
 		return (
 			<div>
@@ -94,7 +104,7 @@ if(this.state.username==='' || this.state.password===''){
     		<div>
     		<input id="Submit" className="buttonSubmit"
         type="button" value="Submit"
-        onClick={this.TryLog}></input>
+        onClick={this.onClick}></input>
     		</div>
         </form>
 			</div>
