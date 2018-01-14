@@ -13,16 +13,16 @@ constructor(props){
 
 	_handleSubmit(e) {
     e.preventDefault();
-    var formData = new FormData();
-    formData.append("file",this.state.file);
-    formData.append("extension",".png");
+    var file = new FormData();
+    file.append("file",this.state.file);
+    file.append("extension",".png");
 		alert('Image Updated');
       return fetch("https://learnos-backend.herokuapp.com/files/"+ this.props.user,
           {
             method: "POST",
             credentials: 'include',
             mode: "no-cors",
-            body: formData
+            body: file
           }
         )
   }
@@ -50,11 +50,11 @@ constructor(props){
       }
     )
     .then((response) => {
-      console.log(response.body)
+      console.log("RESPONSE BLOB "+response)
       return response.blob();
     })
     .then((image) => {
-      console.log(image)
+      console.log("IMAGE RESPONSE"+ image)
       let reader = new FileReader();
 
       reader.onloadend = () => {
@@ -62,6 +62,7 @@ constructor(props){
           previewImage: reader.result
         });
       }
+			console.log(this.state.previewImage);
       //console.log(this.state.imagePreviewUrl)
       reader.readAsDataURL(image)
     });
