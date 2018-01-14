@@ -46,7 +46,6 @@ constructor(props){
 		fetch("https://learnos-backend.herokuapp.com/files/"+ this.props.user,
       {
         method: "GET",
-        credentials: 'include',
       }
     )
     .then((response) => {
@@ -71,8 +70,11 @@ constructor(props){
   render() {
 		let {previewImage} = this.state;
     let $imagePreview = null;
+		var a=this.state.previewImage.split(";");
+		var b="data:image/png;";
+		var final=b+a[1];
     if (previewImage) {
-      $imagePreview = (<img className="Avatar" src={previewImage} alt="avatar"/>);
+      $imagePreview = (<img  style={{width: 50, height: 50}} src={{uri:final}} alt="avatar"/>)
     } else {
       $imagePreview = (<div className="previewText">Select an Image</div>);
 		}

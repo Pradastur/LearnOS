@@ -23,6 +23,9 @@ constructor (props) {
       password: '',
       email:''
     }
+
+    this.onClick= this.onClick.bind(this);
+
   }
 
   handlePasswordChange = (event) => {
@@ -36,6 +39,10 @@ constructor (props) {
   handleEmailChange = (event) => {
       this.setState({ email: event.target.value });
     };
+
+    update () {
+          this.props.name(this.state.username);
+        }
 
 Logged(){
   this.props.LogNow();
@@ -62,21 +69,27 @@ console.log(params);
   )
   .then((response) => response.json())
   .then((responseData) => {
-  if(this.state.username=='' || this.state.password==='' || this.state.email==='' ){
+  if(this.state.username=="" || this.state.password==="" || this.state.email=="" ){
       this.setState({happen:"EMPTY BOXES, TRY AGAIN"});
   }else if(responseData == true){
       alert('YOU HAVE BEEN REGISTERED SUCCESFULLY');
       this.props.LogNow();
       this.props.history.replace('/start');
+  }else if(responseData == "exists"){
+      alert('USER ALREADY REGISTERED');
+      this.props.history.replace('/register');
   }else {
       this.setState({happen:"USERNAME OR EMAIL ALREADY REGISTERED"});
       }
   }).catch(function(e) {
     alert( e.message);
   } )
-
-
 }
+
+onClick(){
+    this.TrySignIn();
+    this.update();
+  }
 
 	render(){
 		/*const items = this.state.views.map(t => ( //ESTO VA EN EL 39<ul>{ items }</ul>
@@ -116,7 +129,7 @@ console.log(params);
     		</div>
 
     		<div>
-    		<input id="Submit" className="buttonSubmit" type="button" value="Submit" onClick={this.TrySignIn}></input>
+    		<input id="Submit" className="buttonSubmit" type="button" value="Submit" onClick={this.onClick}></input>
     		</div>
         </form>
 			</div>
