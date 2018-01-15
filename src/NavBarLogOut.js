@@ -50,31 +50,21 @@ constructor(props){
     )
     .then((response) => {
       console.log("RESPONSE BLOB "+response)
-      return response.blob();
+      return response.text();
     })
     .then((image) => {
-      console.log("IMAGE RESPONSE"+ image)
-      let reader = new FileReader();
-
-      reader.onloadend = () => {
         this.setState({
-          previewImage: reader.result
+          previewImage: image
         });
-      }
-			console.log(this.state.previewImage);
       //console.log(this.state.imagePreviewUrl)
-      reader.readAsDataURL(image)
     });
 }
 
   render() {
 		let {previewImage} = this.state;
     let $imagePreview = null;
-		var a=this.state.previewImage.split(";");
-		var b="data:image/png;";
-		var final=b+a[1];
     if (previewImage) {
-      $imagePreview = (<img  style={{width: 50, height: 50}} src={{uri:final}} alt="avatar"/>)
+      $imagePreview = (<img className="Avatar" src={previewImage} alt="avatar"/>);
     } else {
       $imagePreview = (<div className="previewText">Select an Image</div>);
 		}

@@ -19,26 +19,32 @@ export class Register extends React.Component {
 constructor (props) {
     super(props);
     this.state= {
-      username:'',
+      username: '',
       password: '',
-      email:''
+      email: '',
+      repeatPassword: '',
     }
 
     this.onClick= this.onClick.bind(this);
 
   }
 
-  handlePasswordChange = (event) => {
-    this.setState({ password: event.target.value });
-};
-
-  handleUserChange = (event) => {
-      this.setState({ username: event.target.value });
-    };
+  handleNameChange = (event) => {
+    this.setState({ username: event.target.value });
+  };
 
   handleEmailChange = (event) => {
-      this.setState({ email: event.target.value });
-    };
+    this.setState({ email: event.target.value });
+  };
+
+  handleRepeatPassChange = (event) => {
+    this.setState({ repeatPassword: event.target.value });
+  };
+
+  handlePasswordChange = (event) => {
+    this.setState({ password: event.target.value });
+  };
+
 
     update () {
           this.props.name(this.state.username);
@@ -56,6 +62,15 @@ var params = {
     username: this.state.username,
   };
 console.log(params);
+if(this.state.username==='' || this.state.password==='' || this.state.email==='' || this.state.repeatPassword===''){
+          this.setState({happen:"EMPTY BOXES, TRY AGAIN"});
+        }else if(this.state.email.indexOf('@') === -1 || this.state.email.indexOf('.') === -1){
+          this.setState({happen:"IT IS NOT A VALID EMAIL, TRY AGAIN"});
+        }else if (this.state.password.length < 8){
+          this.setState({happen:"PASSWORD MUST CONTAIN 8 CHARACTERS AT LEAST, TRY AGAIN"});
+        }else if(this.state.password !== this.state.repeatPassword){
+          this.setState({happen:"IT IS NOT THE SAME PASSWORD, TRY AGAIN"});
+}else{
   return fetch("https://learnos-backend.herokuapp.com/users/",
   {
         method: "POST",
@@ -85,6 +100,7 @@ console.log(params);
     alert( e.message);
   } )
 }
+}
 
 onClick(){
     this.TrySignIn();
@@ -99,36 +115,21 @@ onClick(){
       <form>
 			 <h1>Register </h1>
 			<div className="containerUser">
-				<label> <b> Username </b> </label>
+      <p className="User">
+              <input type="text" value={this.state.username} onChange={this.handleNameChange} placeholder="Username" />
+            </p>
 
-				<input type="text"
-        value={this.state.username}
-        onChange={this.handleUserChange}
-				placeholder="Enter Username"
-				name="username"/>
-				</div>
+            <p className="Password">
+              <input type="password" value={this.state.password} onChange={this.handlePasswordChange} placeholder="Password"/>
+            </p>
 
-      <div className="containerEmail">
-				<label> <b> Email </b> </label>
+            <p className="RPassword">
+              <input type="password" value={this.state.repeatPassword} onChange={this.handleRepeatPassChange} placeholder="Repeat Password"/>
+            </p>
 
-				<input type="text"
-        value={this.state.email}
-        onChange={this.handleEmailChange}
-				placeholder="Enter Email"
-				name="username"/>
-				</div>
-			<div className="containerPswd">
-
-				<label> <b> Password </b> </label>
-
-    			<input type="password"
-          value={this.state.pass}
-          onChange={this.handlePasswordChange}
-    			placeholder="Enter Password"
-    			name="password"/>
-    		</div>
-
-    		<div>
+            <p className="Email">
+              <input type="text" value={this.state.email} onChange={this.handleEmailChange} placeholder="Email"/>
+              </p> 
     		<input id="Submit" className="buttonSubmit" type="button" value="Submit" onClick={this.onClick}></input>
     		</div>
         </form>
