@@ -63,13 +63,13 @@ var params = {
   };
 console.log(params);
 if(this.state.username==='' || this.state.password==='' || this.state.email==='' || this.state.repeatPassword===''){
-          this.setState({happen:"EMPTY BOXES, TRY AGAIN"});
+          alert("EMPTY BOXES, TRY AGAIN");
         }else if(this.state.email.indexOf('@') === -1 || this.state.email.indexOf('.') === -1){
-          this.setState({happen:"IT IS NOT A VALID EMAIL, TRY AGAIN"});
+          alert("IT IS NOT A VALID EMAIL, TRY AGAIN");
         }else if (this.state.password.length < 8){
-          this.setState({happen:"PASSWORD MUST CONTAIN 8 CHARACTERS AT LEAST, TRY AGAIN"});
+          alert("PASSWORD MUST CONTAIN 8 CHARACTERS AT LEAST, TRY AGAIN");
         }else if(this.state.password !== this.state.repeatPassword){
-          this.setState({happen:"IT IS NOT THE SAME PASSWORD, TRY AGAIN"});
+          alert("IT IS NOT THE SAME PASSWORD, TRY AGAIN");
 }else{
   return fetch("https://learnos-backend.herokuapp.com/users/",
   {
