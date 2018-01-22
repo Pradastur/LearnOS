@@ -61,15 +61,15 @@ var params = {
     email: this.state.email,
     username: this.state.username,
   };
-console.log(params);
-if(this.state.username==='' || this.state.password==='' || this.state.email==='' || this.state.repeatPassword===''){
-          alert("EMPTY BOXES, TRY AGAIN");
-        }else if(this.state.email.indexOf('@') === -1 || this.state.email.indexOf('.') === -1){
-          alert("IT IS NOT A VALID EMAIL, TRY AGAIN");
-        }else if (this.state.password.length < 8){
-          alert("PASSWORD MUST CONTAIN 8 CHARACTERS AT LEAST, TRY AGAIN");
-        }else if(this.state.password !== this.state.repeatPassword){
-          alert("IT IS NOT THE SAME PASSWORD, TRY AGAIN");
+  console.log(params);
+  if(this.state.username==='' || this.state.password==='' || this.state.email==='' || this.state.repeatPassword===''){
+            alert("EMPTY BOXES, TRY AGAIN");
+          }else if(this.state.email.indexOf('@') === -1 || this.state.email.indexOf('.') === -1){
+            alert("IT IS NOT A VALID EMAIL, TRY AGAIN");
+          }else if (this.state.password.length < 8){
+            alert("PASSWORD MUST CONTAIN 8 CHARACTERS AT LEAST, TRY AGAIN");
+          }else if(this.state.password !== this.state.repeatPassword){
+            alert("IT IS NOT THE SAME PASSWORD, TRY AGAIN");
 }else{
   return fetch("https://learnos-backend.herokuapp.com/users/",
   {
@@ -85,7 +85,7 @@ if(this.state.username==='' || this.state.password==='' || this.state.email===''
   .then((response) => response.json())
   .then((responseData) => {
   if(this.state.username=="" || this.state.password==="" || this.state.email=="" ){
-      this.setState({happen:"EMPTY BOXES, TRY AGAIN"});
+      alert("EMPTY BOXES, TRY AGAIN");
   }else if(responseData == true){
       alert('YOU HAVE BEEN REGISTERED SUCCESFULLY');
       this.props.LogNow();
@@ -94,7 +94,7 @@ if(this.state.username==='' || this.state.password==='' || this.state.email===''
       alert('USER ALREADY REGISTERED');
       this.props.history.replace('/register');
   }else {
-      this.setState({happen:"USERNAME OR EMAIL ALREADY REGISTERED"});
+      alert("USERNAME OR EMAIL ALREADY REGISTERED");
       }
   }).catch(function(e) {
     alert( e.message);
@@ -129,7 +129,7 @@ onClick(){
 
             <p className="Email">
               <input type="text" value={this.state.email} onChange={this.handleEmailChange} placeholder="Email"/>
-              </p> 
+              </p>
     		<input id="Submit" className="buttonSubmit" type="button" value="Submit" onClick={this.onClick}></input>
     		</div>
         </form>
