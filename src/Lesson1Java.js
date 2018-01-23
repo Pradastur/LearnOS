@@ -8,11 +8,13 @@ constructor(props){
 		text:'',
 	}
 	this.submit=this.submit.bind(this);
+	this.haveText=this.haveText.bind(this);
 }
 
 handleTextChange = (event) => {
+	this.props.updateText(event.target.value);
     this.setState({ text: event.target.value });
-  };
+}
 
 submit(){
 	if(this.state.text== 'System.out.println("Hello World");'){
@@ -24,7 +26,29 @@ submit(){
 	}
 }
 
+haveText(){
+	if(this.props.text===''){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
 render(){
+	let input=null;
+	if(this.haveText){
+		 input= <input type="text"
+		 value={this.props.text}
+		 onChange={this.handleTextChange}
+		 name="level1"></input>
+	 }
+	 else{
+		 input= <input type="text"
+		 value={this.state.text}
+		 onChange={this.handleTextChange}
+		 name="level1"></input>
+	 }
 		return(
 			<div className="Lesson">
 				<div className="Level">
@@ -41,10 +65,7 @@ render(){
 									<div>
 									 {'{'}
 									 </div>
-											<input type="text"
-											value={this.state.text}
-											onChange={this.handleTextChange}
-											name="level1"></input>
+									 {input}
 									<div>
 										 {'}'}
 										</div>

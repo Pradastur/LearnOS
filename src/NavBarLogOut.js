@@ -64,24 +64,24 @@ constructor(props){
 		let {previewImage} = this.state;
     let $imagePreview = null;
     if (previewImage) {
-      $imagePreview = (<img className="Avatar" src={previewImage} alt="avatar"/>);
+      $imagePreview = (<img className="Avatar" src={previewImage} alt="avatar" style={{width: 150, height: 75}} />);
     } else {
-      $imagePreview = (<div className="previewText">Select an Image</div>);
+      $imagePreview = (<div className="previewText">Loading avatar..</div>);
 		}
   		return (
   			<div className="NavButtons">
-				<div className="Image">
-						 {$imagePreview}
-						<form onSubmit={(e)=>this._handleSubmit(e)}>
-				      <input className="fileInput"
-				        type="file"
-								onChange={(e)=>this._handleImageChange(e)} />
-							</form>
-					</div>
 					<button className="submitButton"
 						type="submit"
-						onClick={(e)=>this._handleSubmit(e)}>Upload Avatar Image
+						onClick={(e)=>this._handleSubmit(e)}>Update Avatar Image
 					</button>
+					<div className="Image">
+							 {$imagePreview}
+							<form onSubmit={(e)=>this._handleSubmit(e)}>
+					      <input className="fileInput"
+					        type="file"
+									onChange={(e)=>this._handleImageChange(e)} />
+								</form>
+						</div>
 				<Link to='/logout'>
   			<button className="LogOut">
   				Log Out

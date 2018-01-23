@@ -34,6 +34,9 @@ return fetch("https://learnos-backend.herokuapp.com/users/",
       console.log("Response: "+responseData);
 if(responseData==true){
     this.Log();
+    this.props.updateTextC('');
+    this.props.updateTextJava('');
+    this.props.updateTextPython('');
   }
 }).catch(function(e) {
     alert( e.message);

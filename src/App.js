@@ -37,7 +37,10 @@ class App extends React.Component {
       isLogged:false,
       textEx:'',
       username:'',
-      languages:[]
+      languages:[],
+      Ctext:'',
+      Javatext:'',
+      Pythontext:''
     }
     this.trueLog=this.trueLog.bind(this);
     this.changeToAdminScreen=this.changeToAdminScreen.bind(this);
@@ -95,10 +98,28 @@ changeToAdminScreen(){
     });
 }
 
-onUpdate (username)
+onUpdateUsername (username)
 {
   this.setState({ username }) ;
   console.log(this.state.username)
+}
+
+onUpdateC (Ctext)
+{
+  this.setState({ Ctext }) ;
+  console.log(this.state.Ctext)
+}
+
+onUpdateJava (Javatext)
+{
+  this.setState({ Javatext }) ;
+  console.log(this.state.Javatext)
+}
+
+onUpdatePython (Pythontext)
+{
+  this.setState({ Pythontext }) ;
+  console.log(this.state.Pythontext)
 }
 
   showTextContent(){
@@ -118,21 +139,21 @@ onUpdate (username)
       <div className="Content">
       <Switch>
   		      <Route exact path='/' render={(props) => (<Content {...props} languageList={this.state.languages}/>)}/>
-  		      <Route path='/login' render={(props) => (<LogIn {...props} LogNow={this.trueLog} changeToAdmin={this.changeToAdminScreen} name={this.onUpdate.bind(this)}/>)} />
-            <Route path='/logout' render={(props) => (<LogOut{...props} Yes={this.trueLog} No={this.trueLog} refreshHome={this.TryLog}/>)} />
+  		      <Route path='/login' render={(props) => (<LogIn {...props} LogNow={this.trueLog} changeToAdmin={this.changeToAdminScreen} name={this.onUpdateUsername.bind(this)}/>)} />
+            <Route path='/logout' render={(props) => (<LogOut{...props} Yes={this.trueLog} No={this.trueLog} refreshHome={this.TryLog} updateTextC={this.onUpdateC.bind(this)} updateTextJava={this.onUpdateJava.bind(this)} updateTextPython={this.onUpdatePython.bind(this)}/>)} />
             <Route path='/start' render={(props) => (<Start {...props} languageList={this.state.languages}/>)}/>
   		      <Route path='/register' render={(props) => (<Register {...props} LogNow={this.trueLog} name={this.handleUser}/>)} />
             <Route path='/admin' component={AdminScreen}/>
             <Route path='/levelC' render={(props) => (<LevelC{...props}/>)} />
             <Route path='/levelJava' render={(props) => (<LevelJava />)} />
             <Route path='/levelPython' render={(props) => (<LevelPython/>)} />
-            <Route path='/levelC_1' render={(props) => (<Lesson1C{...props}/>)} />
+            <Route path='/levelC_1' render={(props) => (<Lesson1C{...props} text={this.state.Ctext} updateText={this.onUpdateC.bind(this)}/>)} />
             <Route path='/levelC_2' render={(props) => (<Lesson2C{...props}/>)} />
             <Route path='/levelC_3' render={(props) => (<Lesson3C{...props}/>)} />
-            <Route path='/levelJava_1' render={(props) => (<Lesson1Java{...props}/>)} />
+            <Route path='/levelJava_1' render={(props) => (<Lesson1Java{...props} text={this.state.Javatext} updateText={this.onUpdateJava.bind(this)}/>)} />
             <Route path='/levelJava_2' render={(props) => (<Lesson2Java{...props}/>)} />
             <Route path='/levelJava_3' render={(props) => (<Lesson3Java{...props}/>)} />
-            <Route path='/levelPython_1' render={(props) => (<Lesson1Python{...props}/>)} />
+            <Route path='/levelPython_1' render={(props) => (<Lesson1Python{...props} text={this.state.Pythontext} updateText={this.onUpdatePython.bind(this)}/>)} />
             <Route path='/levelPython_2' render={(props) => (<Lesson2Python{...props}/>)} />
             <Route path='/levelPython_3'  render={(props) => (<Lesson3Python{...props}/>)} />
 

@@ -39,7 +39,7 @@
   margin-right: 60px;
 }
 .Avatar{
-  
+
 }
 
 .previewImage{
@@ -276,4 +276,9 @@ label[for=yes] {
 
 label[for=no] {
   right: 30px;
+}
+
+.LogOut {
+  position: absolute;
+  right: 0;
 }
